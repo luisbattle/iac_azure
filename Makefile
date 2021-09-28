@@ -5,6 +5,7 @@ init:
 	# Elimino llaves
 	rm -rf id_rsa*
 	# Genero nuevas llaves
+	chmod +x scripts/generate_pem.sh 
 	./scripts/generate_pem.sh
 	# LLave generada
 	cat id_rsa.pub
