@@ -11,6 +11,7 @@ Se utiliza `tfenv` para el manejo de versiones de terraform
     tfenv use 1.0.6
 
 ## Terraform init/plan/apply/destroy
+Antes de ejecutar el terraform realizar loguearse a azure con `az login`
 Los comandos de terraform se utilizan a traves de [Makefile](Makefile) , siendo los siguientes:
 
     - make init
@@ -27,4 +28,13 @@ Ejemplo de uso para conectarse con la ssh al bastion:
     ssh -i "/tmp/id_rsa" adminuser@20.65.89.194
 
 ## Terraform State
-El estado de Terraform se almacena en un `storage Account` de Azure
+El estado de Terraform se almacena en un `storage Account` de Azure y se declara de la siguiente manera:
+
+    terraform {
+        backend "azurerm" {
+            resource_group_name  = "rg-terraformstate"
+            storage_account_name = "tfstoragestateaccount"
+            container_name       = "tfstate"
+            key                  = "testing.terraform.tfstate"
+        }
+    }

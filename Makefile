@@ -10,7 +10,7 @@ init:
 	cat id_rsa.pub
 	terraform init
 
-show:
+plan:
 	terraform plan
 
 apply:
