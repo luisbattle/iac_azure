@@ -1,7 +1,6 @@
 # Bastion
 output "bastion_instance_ip_addr" {
     value = azurerm_public_ip.public_bastion.ip_address
-
 }
 
 # Backend

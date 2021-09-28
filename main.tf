@@ -1,10 +1,3 @@
-locals {
-  required_tags ={
-    project = "projectOne"
-    environment = "testing"
-  }
-}
-
 data "template_file" "linux-backend-cloud-init" {
   template = file("./scripts/init_backend.sh")
 }

@@ -19,7 +19,7 @@ resource "azurerm_virtual_machine" "backend" {
     disable_password_authentication = "true"
     ssh_keys {
       path = "/home/adminuser/.ssh/authorized_keys"
-      key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCYa6/AsuTtUMXqbGjUyGkBikfy+ucucDACNdkTDnfVHhxhG1Of6/TgMbvJPBMPc3J6oHhspzeq2ZBZHUUEGqrmtiPPoH+g27SwsGpvfxEQPRmGdECyFFBgAppJXGihe4oguDXTpC22WlC53VCy64s6VT+DqS3V26BV2y4Bn+GQDgk0NUfmSsgQfQcayBsoHOq+7+y5xI5BKglF1CrZlVF74u1umgbLgkDNZkkEJrfcFmZONhjNTcbtYEO+3U4tHwlh954g3MqqJswYn42lGt0DJ6oSa3/0xxj6ovsQWCWjOwf9ktIglHjB5tY9naM5xYAEtBpoxd0Mp9PzlsrMlTz5uMldh+W+NeO7qlzW1bC9IKysxMvu8bWw/7chZMRhoC2R16qZL78KAopU+0umnySLc5j+Cy6Xj/jJOpcG57S827lnfqOaEfscpoogRb+iGgPA+RMeRoBBg/BfGS41LxkV6ON4pTN4L4tX8bVyUP8IrE5/x/oDa5vYUjjEwnPE/0mROhfM+76XUTDiFUShBj+L92tk46huHJ/AQ5wwTq7ncR+A91z6oIFbPW0Gd1g3bKTqUrMV2EcV7tERhCfyoS8eh4HavwfceMOSjYSN8eUXQKnf+aPuc5flPmFzoMJSiJim4ui7PMLulNOKbjYo9CQHXaZJedWxVVQIYvPreVwlAw== lbatalla@ASUS-TUF"
+      key_data = file("./id_rsa.pub")
     }
   }
 
@@ -58,7 +58,7 @@ resource "azurerm_virtual_machine" "frontend" {
     disable_password_authentication = "true"
     ssh_keys {
       path = "/home/adminuser/.ssh/authorized_keys"
-      key_data = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCYa6/AsuTtUMXqbGjUyGkBikfy+ucucDACNdkTDnfVHhxhG1Of6/TgMbvJPBMPc3J6oHhspzeq2ZBZHUUEGqrmtiPPoH+g27SwsGpvfxEQPRmGdECyFFBgAppJXGihe4oguDXTpC22WlC53VCy64s6VT+DqS3V26BV2y4Bn+GQDgk0NUfmSsgQfQcayBsoHOq+7+y5xI5BKglF1CrZlVF74u1umgbLgkDNZkkEJrfcFmZONhjNTcbtYEO+3U4tHwlh954g3MqqJswYn42lGt0DJ6oSa3/0xxj6ovsQWCWjOwf9ktIglHjB5tY9naM5xYAEtBpoxd0Mp9PzlsrMlTz5uMldh+W+NeO7qlzW1bC9IKysxMvu8bWw/7chZMRhoC2R16qZL78KAopU+0umnySLc5j+Cy6Xj/jJOpcG57S827lnfqOaEfscpoogRb+iGgPA+RMeRoBBg/BfGS41LxkV6ON4pTN4L4tX8bVyUP8IrE5/x/oDa5vYUjjEwnPE/0mROhfM+76XUTDiFUShBj+L92tk46huHJ/AQ5wwTq7ncR+A91z6oIFbPW0Gd1g3bKTqUrMV2EcV7tERhCfyoS8eh4HavwfceMOSjYSN8eUXQKnf+aPuc5flPmFzoMJSiJim4ui7PMLulNOKbjYo9CQHXaZJedWxVVQIYvPreVwlAw== lbatalla@ASUS-TUF"
+      key_data = file("./id_rsa.pub")
     }
   }
 
@@ -90,7 +90,7 @@ resource "azurerm_linux_virtual_machine" "bastion" {
 
   admin_ssh_key {
     username   = "adminuser"
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCYa6/AsuTtUMXqbGjUyGkBikfy+ucucDACNdkTDnfVHhxhG1Of6/TgMbvJPBMPc3J6oHhspzeq2ZBZHUUEGqrmtiPPoH+g27SwsGpvfxEQPRmGdECyFFBgAppJXGihe4oguDXTpC22WlC53VCy64s6VT+DqS3V26BV2y4Bn+GQDgk0NUfmSsgQfQcayBsoHOq+7+y5xI5BKglF1CrZlVF74u1umgbLgkDNZkkEJrfcFmZONhjNTcbtYEO+3U4tHwlh954g3MqqJswYn42lGt0DJ6oSa3/0xxj6ovsQWCWjOwf9ktIglHjB5tY9naM5xYAEtBpoxd0Mp9PzlsrMlTz5uMldh+W+NeO7qlzW1bC9IKysxMvu8bWw/7chZMRhoC2R16qZL78KAopU+0umnySLc5j+Cy6Xj/jJOpcG57S827lnfqOaEfscpoogRb+iGgPA+RMeRoBBg/BfGS41LxkV6ON4pTN4L4tX8bVyUP8IrE5/x/oDa5vYUjjEwnPE/0mROhfM+76XUTDiFUShBj+L92tk46huHJ/AQ5wwTq7ncR+A91z6oIFbPW0Gd1g3bKTqUrMV2EcV7tERhCfyoS8eh4HavwfceMOSjYSN8eUXQKnf+aPuc5flPmFzoMJSiJim4ui7PMLulNOKbjYo9CQHXaZJedWxVVQIYvPreVwlAw== lbatalla@ASUS-TUF"
+    public_key = file("./id_rsa.pub")
   }
 
   os_disk {
