@@ -38,3 +38,22 @@ El estado de Terraform se almacena en un `storage Account` de Azure y se declara
             key                  = "testing.terraform.tfstate"
         }
     }
+## Application Gateway
+    - Resource Group
+    - Tier
+      - Standard V2
+    - Instance Count(Disable AutoScaling for test)
+    - Availability Zone(Disable for test)
+    - Network
+      - Vnet Application crear Subnet:
+        - subnet_agtw ej: 10.0.0/24
+      - Public IP -> agw-pip
+      - backend pool -> agw-pbe
+        - target -> VM frontend-nic
+      - routing rules -> agw-rtng
+        Listenner
+          - listenner -> agw-lstner
+          - Frontend IP -> public
+        Backend Targets
+          - Target Type -> backend Pool -> agw-pbe
+          - Backend target -> agw-btget

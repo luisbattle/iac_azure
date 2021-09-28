@@ -20,3 +20,4 @@ apply:
 
 destroy:
 	terraform destroy
+	rm -rf id_rsa*
