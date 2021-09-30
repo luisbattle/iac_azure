@@ -16,7 +16,7 @@ plan:
 
 apply:
 	# Aplico TF
-	terraform apply #--auto-approve
+	terraform apply --auto-approve
 
 destroy:
 	terraform destroy

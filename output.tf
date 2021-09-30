@@ -12,3 +12,7 @@ output "backend_instance_ip_addr" {
 output "frontend_instance_ip_addr" {
     value = azurerm_network_interface.nic_frontend.private_ip_address
 }
+
+output "application_gateway_dns" {
+    value = azurerm_application_gateway.network.id
+}
